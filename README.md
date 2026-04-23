@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EduTrack Pro
 
 EduTrack Pro is a Django-based Student Management System designed to manage students, subjects, attendance, and reports from a unified interface.
@@ -197,3 +198,6 @@ edutrack_pro/
 ## License
 
 This project is created for learning and educational use. Feel free to modify and adapt it as needed.
+=======
+# sms-project
+>>>>>>> 9c920ebca7da276b0423ccf5bb29522aefb0345f
