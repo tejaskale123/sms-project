@@ -1,39 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="page-section">
-    <div class="section-header">
-        <div>
-            <h1>Subjects</h1>
-            <p class="section-subtitle">Manage the subjects available for attendance and reports.</p>
-        </div>
-        <a class="btn btn-primary" href="/subjects/add/">+ Add Subject</a>
+<div class="page-header">
+    <div>
+        <h2>Subjects</h2>
+        <p>Manage the subjects available for attendance and reports.</p>
     </div>
+    <a href="/subjects/add/" class="btn">+ Add Subject</a>
+</div>
 
-    <div class="card">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for s in subjects %}
-                <tr>
-                    <td>{{ s.name }}</td>
-                    <td>{{ s.code }}</td>
-                    <td class="text-right">
-                        <a class="link-action link-action-danger" href="/subjects/delete/{{ s.id }}/">Delete</a>
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="3" class="empty-state">No subjects found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in subjects %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.code }}</td>
+                <td class="text-right">
+                    <a class="link-action link-action-danger" href="/subjects/delete/{{ s.id }}/">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="empty-state">No subjects found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

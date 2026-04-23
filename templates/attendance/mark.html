@@ -1,46 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="page-section">
-    <div class="section-header">
-        <div>
-            <h1>Mark Attendance</h1>
-            <p class="section-subtitle">Record attendance for students by subject and date.</p>
-        </div>
-        <a class="btn btn-secondary" href="/attendance/">Back to records</a>
+<div class="page-header">
+    <div>
+        <h2>Mark Attendance</h2>
+        <p>Record attendance for students by subject and date.</p>
     </div>
+    <a class="btn btn-secondary" href="/attendance/">Back to records</a>
+</div>
 
-    <div class="card card-form">
-        <form method="POST" class="form">
-            {% csrf_token %}
-            <div class="form-row">
-                <label>Student</label>
-                <select class="form-control" name="student" required>
-                    {% for s in students %}
-                    <option value="{{ s.id }}">{{ s.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-row">
-                <label>Subject</label>
-                <select class="form-control" name="subject" required>
-                    {% for sub in subjects %}
-                    <option value="{{ sub.id }}">{{ sub.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-row">
-                <label>Date</label>
-                <input class="form-control" type="date" name="date" required>
-            </div>
-            <div class="form-row">
-                <label>Status</label>
-                <select class="form-control" name="status" required>
-                    <option value="present">Present</option>
-                    <option value="absent">Absent</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit">Save Attendance</button>
-        </form>
-    </div>
-</section>
+<div class="card card-form">
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-row">
+            <label>Student</label>
+            <select class="form-control" name="student" required>
+                {% for s in students %}
+                <option value="{{ s.id }}">{{ s.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <label>Subject</label>
+            <select class="form-control" name="subject" required>
+                {% for sub in subjects %}
+                <option value="{{ sub.id }}">{{ sub.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-row">
+            <label>Date</label>
+            <input class="form-control" type="date" name="date" required>
+        </div>
+        <div class="form-row">
+            <label>Status</label>
+            <select class="form-control" name="status" required>
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Save Attendance</button>
+    </form>
+</div>
 {% endblock %}

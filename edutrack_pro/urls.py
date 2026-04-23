@@ -23,6 +23,7 @@ from apps.accounts.views import dashboard  # Import dashboard view
 def home(request):
     return redirect('/dashboard/')  # Redirect to dashboard
 
+
 urlpatterns = [
     path('', home),  # ✅ now works
     path('admin/', admin.site.urls),

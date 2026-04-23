@@ -5,27 +5,42 @@ from apps.students.models import Student
 from apps.subjects.models import Subject
 from apps.attendance.models import Attendance
 
+
+# 🔐 LOGIN VIEW
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        # 🔍 Debug (optional)
+        # print(username, password)
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
+
+            # 🔥 ROLE BASED REDIRECT (IMPORTANT)
+            if hasattr(user, 'role'):
+                if user.role == 'admin':
+                    return redirect('/dashboard/')
+                elif user.role == 'teacher':
+                    return redirect('/attendance/')
+            
+            # fallback
             return redirect('/dashboard/')
+
         else:
-            return render(request, 'accounts/login.html', {'error': 'Invalid credentials'})
+            return render(request, 'accounts/login.html', {
+                'error': 'Invalid credentials'
+            })
 
     return render(request, 'accounts/login.html')
 
 
+# 📊 DASHBOARD
 @login_required
 def dashboard(request):
-    """
-    Dashboard view to display key statistics.
-    """
     total_students = Student.objects.count()
     total_subjects = Subject.objects.count()
     total_attendance = Attendance.objects.count()
@@ -39,6 +54,8 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+# 🚪 LOGOUT
+@login_required
 def user_logout(request):
     logout(request)
     return redirect('/accounts/login/')

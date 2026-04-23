@@ -1,43 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="page-section">
-    <div class="section-header">
-        <div>
-            <h1>Attendance Records</h1>
-            <p class="section-subtitle">Track attendance for students and subjects.</p>
-        </div>
-        <a class="btn btn-primary" href="/attendance/mark/">+ Mark Attendance</a>
+<div class="page-header">
+    <div>
+        <h2>Attendance Records</h2>
+        <p>Track attendance for students and subjects.</p>
     </div>
+    <a href="/attendance/mark/" class="btn">+ Mark Attendance</a>
+</div>
 
-    <div class="card">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Student</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in records %}
-                <tr>
-                    <td>{{ r.student.name }}</td>
-                    <td>{{ r.subject.name }}</td>
-                    <td>{{ r.date }}</td>
-                    <td>
-                        <span class="status-badge {% if r.status %}status-present{% else %}status-absent{% endif %}">
-                            {% if r.status %}Present{% else %}Absent{% endif %}
-                        </span>
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="4" class="empty-state">No attendance records found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+            <tr>
+                <td>{{ r.student.name }}</td>
+                <td>{{ r.subject.name }}</td>
+                <td>{{ r.date }}</td>
+                <td>
+                    <span class="status-badge {% if r.status %}status-present{% else %}status-absent{% endif %}">
+                        {% if r.status %}Present{% else %}Absent{% endif %}
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-state">No attendance records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

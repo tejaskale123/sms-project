@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 # EduTrack Pro
 
-EduTrack Pro is a Django-based Student Management System designed to manage students, subjects, attendance, and reports from a unified interface.
+EduTrack Pro is a Django-based Student Management System designed to manage students, subjects, attendance, reports, and enrollments from a unified interface.
 
 ## Project Overview
 
 - Django project with modular apps inside the `apps/` directory.
-- Apps: `accounts`, `students`, `subjects`, `attendance`, `reports`.
+- Apps: `accounts`, `students`, `subjects`, `attendance`, `reports`, `enrollments`.
 - Uses Django ORM with MySQL database configuration.
 - Templates stored in a global `templates/` directory.
 - Static assets served from `static/css/style.css`.
@@ -70,17 +69,16 @@ edutrack_pro/
 │   │   └── migrations/
 │   │       ├── __init__.py
 │   │       └── 0001_initial.py
-│   └── reports/
-│       ├── __init__.py
-│       ├── admin.py
-│       ├── apps.py
-│       ├── models.py
-│       ├── tests.py
-│       ├── urls.py
-│       ├── views.py
-│       └── migrations/
-│           ├── __init__.py
-│           └── 0001_initial.py
+│   ├── reports/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── enrollments/
+│       └── admin.py
 ├── static/
 │   └── css/
 │       └── style.css
@@ -96,6 +94,7 @@ edutrack_pro/
     │   └── report.html
     ├── students/
     │   ├── add.html
+    │   ├── delete.html
     │   ├── edit.html
     │   └── list.html
     └── subjects/
@@ -109,6 +108,7 @@ edutrack_pro/
 - Subject CRUD
 - Attendance tracking by student, subject, date, and status
 - Attendance reports with summary percentages
+- Enrollment management
 - Authentication system with role-based users (`admin`, `teacher`)
 - All protected views using `@login_required`
 - Professional dashboard and UI updates
@@ -173,6 +173,7 @@ edutrack_pro/
 - `subjects`: subject list and creation.
 - `attendance`: attendance record creation and listing.
 - `reports`: attendance summary reports.
+- `enrollments`: enrollment management.
 
 ## Frontend Design
 

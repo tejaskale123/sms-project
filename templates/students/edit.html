@@ -1,35 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="page-section">
-    <div class="section-header">
-        <div>
-            <h1>Edit Student</h1>
-            <p class="section-subtitle">Update student details and save changes.</p>
-        </div>
-        <a class="btn btn-secondary" href="/students/">Back to list</a>
+<div class="page-header">
+    <div>
+        <h2>Edit Student</h2>
+        <p>Update student details and save changes.</p>
     </div>
+    <a class="btn btn-secondary" href="/students/">Back to list</a>
+</div>
 
-    <div class="card card-form">
-        <form method="POST" class="form">
-            {% csrf_token %}
-            <div class="form-row">
-                <label>Name</label>
-                <input class="form-control" type="text" name="name" value="{{ student.name }}" required>
-            </div>
-            <div class="form-row">
-                <label>Roll Number</label>
-                <input class="form-control" type="text" name="roll" value="{{ student.roll_number }}" required>
-            </div>
-            <div class="form-row">
-                <label>Email</label>
-                <input class="form-control" type="email" name="email" value="{{ student.email }}" required>
-            </div>
-            <div class="form-row">
-                <label>Department</label>
-                <input class="form-control" type="text" name="department" value="{{ student.department }}" required>
-            </div>
-            <button class="btn btn-primary" type="submit">Update Student</button>
-        </form>
-    </div>
-</section>
+<div class="card card-form">
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-row">
+            <label>Name</label>
+            <input class="form-control" type="text" name="name" value="{{ student.name }}" required>
+        </div>
+        <div class="form-row">
+            <label>Roll Number</label>
+            <input class="form-control" type="text" name="roll" value="{{ student.roll_number }}" required>
+        </div>
+        <div class="form-row">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" value="{{ student.email }}" required>
+        </div>
+        <div class="form-row">
+            <label>Department</label>
+            <input class="form-control" type="text" name="department" value="{{ student.department }}" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Update Student</button>
+    </form>
+</div>
 {% endblock %}
