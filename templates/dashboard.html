@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-section dashboard-section">
+    <div class="section-header">
+        <div>
+            <h1>Dashboard</h1>
+            <p class="section-subtitle">Key metrics for your student management system.</p>
+        </div>
+    </div>
+
+    <div class="cards">
+        <article class="card card-stats">
+            <span class="card-label">Students</span>
+            <h2 class="card-number">{{ total_students }}</h2>
+            <p class="card-description">Total registered students</p>
+        </article>
+
+        <article class="card card-stats">
+            <span class="card-label">Subjects</span>
+            <h2 class="card-number">{{ total_subjects }}</h2>
+            <p class="card-description">Total available subjects</p>
+        </article>
+
+        <article class="card card-stats">
+            <span class="card-label">Attendance</span>
+            <h2 class="card-number">{{ total_attendance }}</h2>
+            <p class="card-description">Total attendance records</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

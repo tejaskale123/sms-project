@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <div class="section-header">
+        <div>
+            <h1>Student Directory</h1>
+            <p class="section-subtitle">View and manage all students in the system.</p>
+        </div>
+        <a class="btn btn-primary" href="/students/add/">+ Add Student</a>
+    </div>
+
+    <div class="card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.roll_number }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>{{ s.department }}</td>
+                    <td class="text-right">
+                        <a class="link-action" href="/students/edit/{{ s.id }}/">Edit</a>
+                        <span class="divider">|</span>
+                        <a class="link-action link-action-danger" href="/students/delete/{{ s.id }}/">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="empty-state">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

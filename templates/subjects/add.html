@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <div class="section-header">
+        <div>
+            <h1>Add Subject</h1>
+            <p class="section-subtitle">Create a new subject for attendance tracking.</p>
+        </div>
+        <a class="btn btn-secondary" href="/subjects/">Back to list</a>
+    </div>
+
+    <div class="card card-form">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="form-row">
+                <label>Subject Name</label>
+                <input class="form-control" type="text" name="name" placeholder="Subject Name" required>
+            </div>
+            <div class="form-row">
+                <label>Code</label>
+                <input class="form-control" type="text" name="code" placeholder="Code" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Subject</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
